@@ -1,0 +1,30 @@
+{
+  "name": "ifc-gabriel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EscolaBrasileiraDeBIM/ifc-gabriel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EscolaBrasileiraDeBIM/ifc-gabriel/issues"
+  },
+  "homepage": "https://github.com/EscolaBrasileiraDeBIM/ifc-gabriel#readme",
+  "dependencies": {
+    "three": "^0.135.0",
+    "three-mesh-bvh": "^0.5.17",
+    "web-ifc-three": "^0.0.117"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.2.3"
+  }
+}
