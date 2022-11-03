@@ -123,29 +123,48 @@ import {
     depthTest: false
   });
 
+  const selectionMaterial = new MeshBasicMaterial({
+    transparent: true,
+    opacity: 0.8,
+    color: 0xff22ff,
+    depthTest: false
+  });
+
   let lastModal;
 
-  function pick(event) {
+  async function pick(event, material, getProps) {
     const found = cast(event)[0];
     if (found) {
         const index = found.faceIndex;  
         lastModal = found.object;     
         const geometry = found.object.geometry;
-        const ifc = loader.ifcManager;
-        const id = ifc.getExpressId(geometry, index);
-        console.log(id);
+        const id = loader.ifcManager.getExpressId(geometry, index);
+
+        if(getProps == true){
+          const props = await loader.ifcManager.getItemProperties(found.object.modelID, id);
+          //console.log(props);
+          const prset = await loader.ifcManager.getPropertySets(found.object.modelID, id, true);
+          console.log(prset);
+          
+          // for(const set of prset.){
+          //   const id = set.Value;
+          //   console.log(id);
+          // }
+
+        }
 
         loader.ifcManager.createSubset({
           modelID: found.object.modelID,
-          material: highlightMaterial,
+          material: material,
           ids: [id],
           scene,
           removePrevious: true
         });
     } else if(lastModal){
-      loader.ifcManager.removeFromSubset(lastModal.modelID, highlightMaterial);
+      loader.ifcManager.removeFromSubset(lastModal.modelID, material);
       lastModal = undefined;
     }
   }
 
-  canvas.onmousemove = (event) => pick(event);
+  canvas.onmousemove = (event) => pick(event, highlightMaterial, false);
+  canvas.ondblclick = (event) => pick(event, selectionMaterial, true);
