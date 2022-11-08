@@ -14,6 +14,7 @@ import {
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { IFCLoader } from "web-ifc-three";
   import { acceleratedRaycast, computeBoundsTree, disposeBoundsTree } from "three-mesh-bvh";
+  import { IFCBUILDING } from "web-ifc";
   
   //Creates the Three.js scene
   const scene = new Scene();
@@ -140,17 +141,30 @@ import {
         const geometry = found.object.geometry;
         const id = loader.ifcManager.getExpressId(geometry, index);
 
-        if(getProps == true){
-          const props = await loader.ifcManager.getItemProperties(found.object.modelID, id);
-          //console.log(props);
-          const prset = await loader.ifcManager.getPropertySets(found.object.modelID, id, true);
-          console.log(prset);
-          
-          // for(const set of prset.){
-          //   const id = set.Value;
-          //   console.log(id);
-          // }
+        if(getProps){
+          const buildingsIDS = await loader.ifcManager.getAllItemsOfType(found.object.modelID, IFCBUILDING);
+          const buildingID = buildingsIDS[0];
 
+          const buildingProps = await loader.ifcManager.getItemProperties(found.object.modelID, buildingID);
+          console.log(buildingProps);
+
+          // const props = await loader.ifcManager.getItemProperties(found.object.modelID, id);
+          // console.log(props);
+          // const psets = await loader.ifcManager.getPropertySets(found.object.modelID, id);
+          
+          // for(const pset of psets){
+          //   const realValues = [];
+
+          //   for(const prop of pset.HasProperties){
+          //     const id = prop.value;
+          //     const value = await loader.ifcManager.getItemProperties(found.object.modelID, id);
+          //     realValues.push(value);
+          //   }
+
+          //   pset.HasProperties = realValues;
+          // }          
+
+          // console.log(psets);
         }
 
         loader.ifcManager.createSubset({
