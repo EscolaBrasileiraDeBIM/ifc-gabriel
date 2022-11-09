@@ -89,14 +89,27 @@ import {
 
   const ifcModels = [];
 
+  let model;
+
   const input = document.getElementById("file-input");
   input.addEventListener('change', async () => {
     const file = input.files[0];
     const url = URL.createObjectURL(file);
-    const model = await loader.loadAsync(url);
+    model = await loader.loadAsync(url);
     scene.add(model);
     ifcModels.push(model);
+
+    const ifcProject = await loader.ifcManager.getSpatialStructure(model.modelID);
+    createTreeMenu(ifcProject);
   });
+
+  const toggler = document.getElementsByClassName("caret");
+  for (let i = 0; i < toggler.length; i++) {
+    toggler[i].onclick = () => {
+      toggler[i].parentElement.querySelector(".nested").classList.toggle("active");
+      toggler[i].classList.toggle("caret-down");
+    }
+  }
 
   const raycaster = new Raycaster();
   raycaster.firstHitOnly = true;
@@ -115,6 +128,114 @@ import {
     raycaster.setFromCamera(mouse, camera);
 
     return raycaster.intersectObjects(ifcModels);
+  }
+
+
+  function createTreeMenu(ifcProject) {
+    const root = document.getElementById("tree-root");
+    removeAllChildren(root);
+    const ifcProjectNode = createNestedChild(root, ifcProject);
+    ifcProject.children.forEach(child => {
+        constructTreeMenuNode(ifcProjectNode, child);
+    });
+  }
+
+  function nodeToString(node) {
+    return `${node.type} - ${node.expressID}`;
+  }
+
+  function constructTreeMenuNode(parent, node) {
+    const children = node.children;
+    if (children.length === 0) {
+        createSimpleChild(parent, node);
+        return;
+    }
+    const nodeElement = createNestedChild(parent, node);
+    children.forEach(child => {
+        constructTreeMenuNode(nodeElement, child);
+    })
+  }
+
+  function createNestedChild(parent, node) {
+      const content = nodeToString(node);
+      const root = document.createElement('li');
+      createTitle(root, content);
+      const childrenContainer = document.createElement('ul');
+      childrenContainer.classList.add("nested");
+      root.appendChild(childrenContainer);
+      parent.appendChild(root);
+      return childrenContainer;
+  }
+
+  function createTitle(parent, content) {
+      const title = document.createElement("span");
+      title.classList.add("caret");
+      title.onclick = () => {
+          title.parentElement.querySelector(".nested").classList.toggle("active");
+          title.classList.toggle("caret-down");
+      }
+      title.textContent = content;
+      parent.appendChild(title);
+  }
+
+  function createSimpleChild(parent, node) {
+      const content = nodeToString(node);
+      const childNode = document.createElement('li');
+      childNode.classList.add('leaf-node');
+      childNode.textContent = content;
+      parent.appendChild(childNode);
+
+      let lastMaterial;
+
+      childNode.onmousemove = async () => {
+        const id = node.expressID;
+        loader.ifcManager.createSubset({
+          modelID: 0,
+          material: highlightMaterial,
+          ids: [id],
+          scene,
+          removePrevious: true
+        });
+      };
+
+      childNode.onclick = async () => {
+        const id = node.expressID;
+        const buildingsIDS = await loader.ifcManager.getAllItemsOfType(0, IFCBUILDING);
+        const buildingID = buildingsIDS[0];
+
+        const buildingProps = await loader.ifcManager.getItemProperties(0, buildingID);
+        //console.log(buildingProps);
+
+        
+
+        loader.ifcManager.createSubset({
+          modelID: 0,
+          material: selectionMaterial,
+          ids: [id],
+          scene,
+          removePrevious: true
+        });
+      }
+
+      // childNode.ondblclick = () => {
+      //   const id = node.expressID;
+      //   loader.ifcManager.createSubset({
+      //     modelID: 0,
+      //     material: lastMaterial,
+      //     ids: [id],
+      //     scene
+      //   });
+      //   //console.log(material);
+      //   // loader.ifcManager.removeFromSubset(0, selectionMaterial);
+      //   // loader.ifcManager.removeFromSubset(0, highlightMaterial);
+      //   console.log("dbclick");
+      // }
+  }
+
+  function removeAllChildren(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
   }
 
   const highlightMaterial = new MeshBasicMaterial({
@@ -180,5 +301,5 @@ import {
     }
   }
 
-  canvas.onmousemove = (event) => pick(event, highlightMaterial, false);
-  canvas.ondblclick = (event) => pick(event, selectionMaterial, true);
+  // canvas.onclick = (event) => pick(event, highlightMaterial, false);
+  // canvas.ondblclick = (event) => pick(event, selectionMaterial, true);
