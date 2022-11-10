@@ -26,6 +26,17 @@ html, body {
     float: right;
 }
 
+#checkbox-container{
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.checkboxes {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+}
+
 .ifc-tree-menu {
     position: absolute;
     overflow-y: scroll;

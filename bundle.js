@@ -107421,8 +107421,8 @@ if (typeof self !== "undefined" && self.crossOriginIsolated) {
         const buildingsIDS = await loader.ifcManager.getAllItemsOfType(0, IFCBUILDING);
         const buildingID = buildingsIDS[0];
 
-        await loader.ifcManager.getItemProperties(0, buildingID);
-        //console.log(buildingProps);
+        const buildingProps = await loader.ifcManager.getItemProperties(0, buildingID);
+        console.log(buildingProps);
 
         
 

@@ -13,33 +13,48 @@
     
     <div class="ifc-tree-menu">
         <ul id="myUL">
-            <li id="tree-root">
-                <span class="caret">Beverages</span>
-                <ul class="nested">
-                    <li>Water</li>
-                    <li>Coffee</li>
-                    <li>
-                        <span class="caret">Tea</span>
-                        <ul class="nested">
-                            <li>Black Tea</li>
-                            <li>White Tea</li>
-                            <li><span class="caret">Green Tea</span>
-                                <ul class="nested">
-                                    <li>Sencha</li>
-                                    <li>Gyokuro</li>
-                                    <li>Matcha</li>
-                                    <li>Pi Lo Chun</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            <li id="tree-root"></li>
         </ul>
     </div>
+
     <div id="file-input-box">
         <input type="file" id="file-input">
     </div>
+
+    <div id="checkbox-container">
+        <div class="checkboxes">
+            <div class="teste">
+                <input checked="true" id="IFCWALLSTANDARDCASE" type="checkbox">
+                Walls
+            </div>
+            <div>
+                <input checked="true" id="IFCSLAB" type="checkbox">
+                Slabs
+            </div>
+            <div>
+                <input checked="true" id="IFCWINDOW" type="checkbox">
+                Windows
+            </div>
+            <div>
+                <input checked="true" id="IFCFURNISHINGELEMENT" type="checkbox">
+                Furniture
+            </div>
+            <div>
+                <input checked="true" id="IFCDOOR" type="checkbox">
+                Doors
+            </div>
+            <div>
+                <input checked="true" id="IFCMEMBER" type="checkbox">
+                Curtain wall structure
+            </div>
+            <div>
+                <input checked="true" id="IFCPLATE" type="checkbox">
+                Curtain wall plates
+            </div>
+        </div>
+    </div>
+
+    
     <script src="bundle.js"></script>
 </body>
 </html>

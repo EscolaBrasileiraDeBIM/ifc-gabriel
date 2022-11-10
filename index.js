@@ -204,7 +204,7 @@ import {
         const buildingID = buildingsIDS[0];
 
         const buildingProps = await loader.ifcManager.getItemProperties(0, buildingID);
-        //console.log(buildingProps);
+        console.log(buildingProps);
 
         
 
