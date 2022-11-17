@@ -54770,7 +54770,7 @@ var IFCBUILDINGELEMENTPARTTYPE = 39481116;
 var IFCBUILDINGELEMENTPROXY = 1095909175;
 var IFCBUILDINGELEMENTPROXYTYPE = 1909888760;
 var IFCBUILDINGELEMENTTYPE = 1950629157;
-var IFCBUILDINGSTOREY = 3124254112;
+var IFCBUILDINGSTOREY$1 = 3124254112;
 var IFCBUILDINGSYSTEM = 1177604601;
 var IFCBURNER = 2938176219;
 var IFCBURNERTYPE = 2188180465;
@@ -54905,7 +54905,7 @@ var IFCDISTRIBUTIONSYSTEM = 3205830791;
 var IFCDOCUMENTINFORMATION = 1154170062;
 var IFCDOCUMENTINFORMATIONRELATIONSHIP = 770865208;
 var IFCDOCUMENTREFERENCE = 3732053477;
-var IFCDOOR = 395920057;
+var IFCDOOR$1 = 395920057;
 var IFCDOORLININGPROPERTIES = 2963535650;
 var IFCDOORPANELPROPERTIES = 1714330368;
 var IFCDOORSTANDARDCASE = 3242481149;
@@ -55011,7 +55011,7 @@ var IFCFLOWTREATMENTDEVICE = 3508470533;
 var IFCFLOWTREATMENTDEVICETYPE = 3009222698;
 var IFCFOOTING = 900683007;
 var IFCFOOTINGTYPE = 1893162501;
-var IFCFURNISHINGELEMENT = 263784265;
+var IFCFURNISHINGELEMENT$1 = 263784265;
 var IFCFURNISHINGELEMENTTYPE = 4238390223;
 var IFCFURNITURE = 1509553395;
 var IFCFURNITURETYPE = 1268542332;
@@ -55098,7 +55098,7 @@ var IFCMECHANICALFASTENER = 377706215;
 var IFCMECHANICALFASTENERTYPE = 2108223431;
 var IFCMEDICALDEVICE = 1437502449;
 var IFCMEDICALDEVICETYPE = 1114901282;
-var IFCMEMBER = 1073191201;
+var IFCMEMBER$1 = 1073191201;
 var IFCMEMBERSTANDARDCASE = 1911478936;
 var IFCMEMBERTYPE = 3181161470;
 var IFCMETRIC = 3368373690;
@@ -55149,7 +55149,7 @@ var IFCPLACEMENT = 2004835150;
 var IFCPLANARBOX = 603570806;
 var IFCPLANAREXTENT = 1663979128;
 var IFCPLANE = 220341763;
-var IFCPLATE = 3171933400;
+var IFCPLATE$1 = 3171933400;
 var IFCPLATESTANDARDCASE = 1156407060;
 var IFCPLATETYPE = 4017108033;
 var IFCPOINT = 2067069095;
@@ -55328,7 +55328,7 @@ var IFCSHELLBASEDSURFACEMODEL = 4124623270;
 var IFCSIMPLEPROPERTY = 3692461612;
 var IFCSIMPLEPROPERTYTEMPLATE = 3663146110;
 var IFCSITE = 4097777520;
-var IFCSLAB = 1529196076;
+var IFCSLAB$1 = 1529196076;
 var IFCSLABELEMENTEDCASE = 3127900445;
 var IFCSLABSTANDARDCASE = 3027962421;
 var IFCSLABTYPE = 2533589738;
@@ -55492,11 +55492,11 @@ var IFCVIRTUALGRIDINTERSECTION = 891718957;
 var IFCVOIDINGFEATURE = 926996030;
 var IFCWALL = 2391406946;
 var IFCWALLELEMENTEDCASE = 4156078855;
-var IFCWALLSTANDARDCASE = 3512223829;
+var IFCWALLSTANDARDCASE$1 = 3512223829;
 var IFCWALLTYPE = 1898987631;
 var IFCWASTETERMINAL = 4237592921;
 var IFCWASTETERMINALTYPE = 1133259667;
-var IFCWINDOW = 3304561284;
+var IFCWINDOW$1 = 3304561284;
 var IFCWINDOWLININGPROPERTIES = 336235671;
 var IFCWINDOWPANELPROPERTIES = 512836454;
 var IFCWINDOWSTANDARDCASE = 486154966;
@@ -55528,7 +55528,7 @@ var IfcElements$1 = [
   IFCBUILDINGELEMENT,
   IFCBUILDINGELEMENTPART,
   IFCBUILDINGELEMENTPROXY,
-  IFCBUILDINGSTOREY,
+  IFCBUILDINGSTOREY$1,
   IFCBURNER,
   IFCCABLECARRIERFITTING,
   IFCCABLECARRIERSEGMENT,
@@ -55557,7 +55557,7 @@ var IfcElements$1 = [
   IFCDISTRIBUTIONELEMENT,
   IFCDISTRIBUTIONFLOWELEMENT,
   IFCDISTRIBUTIONPORT,
-  IFCDOOR,
+  IFCDOOR$1,
   IFCDOORSTANDARDCASE,
   IFCDUCTFITTING,
   IFCDUCTSEGMENT,
@@ -55596,7 +55596,7 @@ var IfcElements$1 = [
   IFCFLOWTERMINAL,
   IFCFLOWTREATMENTDEVICE,
   IFCFOOTING,
-  IFCFURNISHINGELEMENT,
+  IFCFURNISHINGELEMENT$1,
   IFCFURNITURE,
   IFCGEOGRAPHICELEMENT,
   IFCGRID,
@@ -55609,7 +55609,7 @@ var IfcElements$1 = [
   IFCLINEARPOSITIONINGELEMENT,
   IFCMECHANICALFASTENER,
   IFCMEDICALDEVICE,
-  IFCMEMBER,
+  IFCMEMBER$1,
   IFCMEMBERSTANDARDCASE,
   IFCMOTORCONNECTION,
   IFCOPENINGELEMENT,
@@ -55618,7 +55618,7 @@ var IfcElements$1 = [
   IFCPILE,
   IFCPIPEFITTING,
   IFCPIPESEGMENT,
-  IFCPLATE,
+  IFCPLATE$1,
   IFCPLATESTANDARDCASE,
   IFCPORT,
   IFCPOSITIONINGELEMENT,
@@ -55639,7 +55639,7 @@ var IfcElements$1 = [
   IFCSENSOR,
   IFCSHADINGDEVICE,
   IFCSITE,
-  IFCSLAB,
+  IFCSLAB$1,
   IFCSLABELEMENTEDCASE,
   IFCSLABSTANDARDCASE,
   IFCSOLARDEVICE,
@@ -55691,9 +55691,9 @@ var IfcElements$1 = [
   IFCVOIDINGFEATURE,
   IFCWALL,
   IFCWALLELEMENTEDCASE,
-  IFCWALLSTANDARDCASE,
+  IFCWALLSTANDARDCASE$1,
   IFCWASTETERMINAL,
-  IFCWINDOW,
+  IFCWINDOW$1,
   IFCWINDOWSTANDARDCASE
 ];
 
@@ -55930,7 +55930,7 @@ FromRawLineData[IFCBUILDINGELEMENTPROXYTYPE] = (d) => {
 FromRawLineData[IFCBUILDINGELEMENTTYPE] = (d) => {
   return IfcBuildingElementType.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCBUILDINGSTOREY] = (d) => {
+FromRawLineData[IFCBUILDINGSTOREY$1] = (d) => {
   return IfcBuildingStorey.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCBUILDINGSYSTEM] = (d) => {
@@ -56335,7 +56335,7 @@ FromRawLineData[IFCDOCUMENTINFORMATIONRELATIONSHIP] = (d) => {
 FromRawLineData[IFCDOCUMENTREFERENCE] = (d) => {
   return IfcDocumentReference.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCDOOR] = (d) => {
+FromRawLineData[IFCDOOR$1] = (d) => {
   return IfcDoor.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCDOORLININGPROPERTIES] = (d) => {
@@ -56653,7 +56653,7 @@ FromRawLineData[IFCFOOTING] = (d) => {
 FromRawLineData[IFCFOOTINGTYPE] = (d) => {
   return IfcFootingType.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCFURNISHINGELEMENT] = (d) => {
+FromRawLineData[IFCFURNISHINGELEMENT$1] = (d) => {
   return IfcFurnishingElement.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCFURNISHINGELEMENTTYPE] = (d) => {
@@ -56914,7 +56914,7 @@ FromRawLineData[IFCMEDICALDEVICE] = (d) => {
 FromRawLineData[IFCMEDICALDEVICETYPE] = (d) => {
   return IfcMedicalDeviceType.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCMEMBER] = (d) => {
+FromRawLineData[IFCMEMBER$1] = (d) => {
   return IfcMember.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCMEMBERSTANDARDCASE] = (d) => {
@@ -57067,7 +57067,7 @@ FromRawLineData[IFCPLANAREXTENT] = (d) => {
 FromRawLineData[IFCPLANE] = (d) => {
   return IfcPlane.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCPLATE] = (d) => {
+FromRawLineData[IFCPLATE$1] = (d) => {
   return IfcPlate.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCPLATESTANDARDCASE] = (d) => {
@@ -57604,7 +57604,7 @@ FromRawLineData[IFCSIMPLEPROPERTYTEMPLATE] = (d) => {
 FromRawLineData[IFCSITE] = (d) => {
   return IfcSite.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCSLAB] = (d) => {
+FromRawLineData[IFCSLAB$1] = (d) => {
   return IfcSlab.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCSLABELEMENTEDCASE] = (d) => {
@@ -58096,7 +58096,7 @@ FromRawLineData[IFCWALL] = (d) => {
 FromRawLineData[IFCWALLELEMENTEDCASE] = (d) => {
   return IfcWallElementedCase.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCWALLSTANDARDCASE] = (d) => {
+FromRawLineData[IFCWALLSTANDARDCASE$1] = (d) => {
   return IfcWallStandardCase.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCWALLTYPE] = (d) => {
@@ -58108,7 +58108,7 @@ FromRawLineData[IFCWASTETERMINAL] = (d) => {
 FromRawLineData[IFCWASTETERMINALTYPE] = (d) => {
   return IfcWasteTerminalType.FromTape(d.ID, d.type, d.arguments);
 };
-FromRawLineData[IFCWINDOW] = (d) => {
+FromRawLineData[IFCWINDOW$1] = (d) => {
   return IfcWindow.FromTape(d.ID, d.type, d.arguments);
 };
 FromRawLineData[IFCWINDOWLININGPROPERTIES] = (d) => {
@@ -107248,6 +107248,14 @@ var require_web_ifc = __commonJS({
   }
 });
 var IFCBUILDING = 4031249490;
+var IFCBUILDINGSTOREY = 3124254112;
+var IFCDOOR = 395920057;
+var IFCFURNISHINGELEMENT = 263784265;
+var IFCMEMBER = 1073191201;
+var IFCPLATE = 3171933400;
+var IFCSLAB = 1529196076;
+var IFCWALLSTANDARDCASE = 3512223829;
+var IFCWINDOW = 3304561284;
 if (typeof self !== "undefined" && self.crossOriginIsolated) {
   require_web_ifc_mt();
 } else {
@@ -107319,13 +107327,22 @@ if (typeof self !== "undefined" && self.crossOriginIsolated) {
 
   const loader = new IFCLoader();
 
-  loader.ifcManager.setWasmPath('wasm/');
-
-  
+  loader.ifcManager.setWasmPath('wasm/');  
+  loader.ifcManager.useWebWorkers(true, './IFCWorker.js');
 
   loader.ifcManager.setupThreeMeshBVH(computeBoundsTree, disposeBoundsTree, acceleratedRaycast);
 
   let model;
+
+  const categories = {
+    IFCWALLSTANDARDCASE,
+    IFCSLAB,
+    IFCFURNISHINGELEMENT,
+    IFCDOOR,
+    IFCWINDOW,
+    IFCPLATE,
+    IFCMEMBER
+  };
 
   const input = document.getElementById("file-input");
   input.addEventListener('change', async () => {
@@ -107333,10 +107350,48 @@ if (typeof self !== "undefined" && self.crossOriginIsolated) {
     const url = URL.createObjectURL(file);
     model = await loader.loadAsync(url);
     scene.add(model);
+    editFloorName();
+
 
     const ifcProject = await loader.ifcManager.getSpatialStructure(model.modelID);
     createTreeMenu(ifcProject);
+    setupAllCategories();
   });
+  
+  setupProgress();
+
+  function setupProgress(){
+    const text = document.getElementById('progress-text');
+    loader.ifcManager.setOnProgress((event) => {
+      const percent = event.loaded / event.total * 100;
+      const formatted = Math.trunc(percent);
+      text.innerText = formatted;
+    });
+  }
+
+  async function editFloorName() {
+    const storeysIds = await loader.ifcManager.getAllItemsOfType(model.modelID, IFCBUILDINGSTOREY, false);
+    const firstStoreyId = storeysIds[0];
+    const storey = await loader.ifcManager.getItemProperties(model.modelID, firstStoreyId);
+    console.log(storey);
+
+    const result = prompt("Introduce the new name of the storey");
+    storey.LongName.value = result;
+    loader.ifcManager.ifcAPI.WriteLine(model.modelID, storey);
+
+    const data = await loader.ifcManager.ifcAPI.ExportFileAsIFC(model.modelID);
+    const blob = new Blob([data]);
+    const file = new File([blob], "modified.ifc");
+
+    const link = document.createElement('a');
+    link.download = 'modified.ifc';
+    link.href = URL.createObjectURL(file);
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+  }
 
   const toggler = document.getElementsByClassName("caret");
   for (let i = 0; i < toggler.length; i++) {
@@ -107344,6 +107399,56 @@ if (typeof self !== "undefined" && self.crossOriginIsolated) {
       toggler[i].parentElement.querySelector(".nested").classList.toggle("active");
       toggler[i].classList.toggle("caret-down");
     };
+  }
+
+  function getName(category) {
+    const names = Object.keys(categories);
+    return names.find(name => categories[name] === category);
+  }
+
+  async function getAll(category) {
+    return loader.ifcManager.getAllItemsOfType(0, category, false);
+  }
+
+// Creates a new subset containing all elements of a category
+  async function newSubsetOfType(category) {
+    const ids = await getAll(category);
+    return loader.ifcManager.createSubset({
+        modelID: 0,
+        scene,
+        ids,
+        removePrevious: true,
+        customID: category.toString()
+    })
+  }
+
+  // Stores the created subsets
+  const subsets = {};
+
+  async function setupAllCategories() {
+    const allCategories = Object.values(categories);
+    for (let i = 0; i < allCategories.length; i++) {
+      const category = allCategories[i];
+      await setupCategory(category);
+    }
+  }
+
+// Creates a new subset and configures the checkbox
+  async function setupCategory(category) {
+    subsets[category] = await newSubsetOfType(category);
+    setupCheckBox(category);
+  }
+
+// Sets up the checkbox event to hide / show elements
+  function setupCheckBox(category) {
+    const name = getName(category);
+    const checkBox = document.getElementById(name);
+    checkBox.addEventListener('change', (event) => {
+      const checked = event.target.checked;
+      const subset = subsets[category];
+      if (checked) scene.add(subset);
+      else subset.removeFromParent();
+    });
   }
 
   const raycaster = new Raycaster();

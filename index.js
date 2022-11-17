@@ -14,7 +14,16 @@ import {
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { IFCLoader } from "web-ifc-three";
   import { acceleratedRaycast, computeBoundsTree, disposeBoundsTree } from "three-mesh-bvh";
-  import { IFCBUILDING } from "web-ifc";
+  import { IFCBUILDING, IFCBUILDINGSTOREY } from "web-ifc";
+  import {
+    IFCWALLSTANDARDCASE,
+    IFCSLAB,
+    IFCDOOR,
+    IFCWINDOW,
+    IFCFURNISHINGELEMENT,
+    IFCMEMBER,
+    IFCPLATE
+  } from 'web-ifc';
   
   //Creates the Three.js scene
   const scene = new Scene();
@@ -81,9 +90,8 @@ import {
 
   const loader = new IFCLoader();
 
-  loader.ifcManager.setWasmPath('wasm/');
-
-  
+  loader.ifcManager.setWasmPath('wasm/');  
+  loader.ifcManager.useWebWorkers(true, './IFCWorker.js');
 
   loader.ifcManager.setupThreeMeshBVH(computeBoundsTree, disposeBoundsTree, acceleratedRaycast);
 
@@ -91,17 +99,65 @@ import {
 
   let model;
 
+  const categories = {
+    IFCWALLSTANDARDCASE,
+    IFCSLAB,
+    IFCFURNISHINGELEMENT,
+    IFCDOOR,
+    IFCWINDOW,
+    IFCPLATE,
+    IFCMEMBER
+  };
+
   const input = document.getElementById("file-input");
   input.addEventListener('change', async () => {
     const file = input.files[0];
     const url = URL.createObjectURL(file);
     model = await loader.loadAsync(url);
     scene.add(model);
+    editFloorName();
     ifcModels.push(model);
+
 
     const ifcProject = await loader.ifcManager.getSpatialStructure(model.modelID);
     createTreeMenu(ifcProject);
+    setupAllCategories();
   });
+  
+  setupProgress();
+
+  function setupProgress(){
+    const text = document.getElementById('progress-text');
+    loader.ifcManager.setOnProgress((event) => {
+      const percent = event.loaded / event.total * 100;
+      const formatted = Math.trunc(percent);
+      text.innerText = formatted;
+    });
+  }
+
+  async function editFloorName() {
+    const storeysIds = await loader.ifcManager.getAllItemsOfType(model.modelID, IFCBUILDINGSTOREY, false);
+    const firstStoreyId = storeysIds[0];
+    const storey = await loader.ifcManager.getItemProperties(model.modelID, firstStoreyId);
+    console.log(storey);
+
+    const result = prompt("Introduce the new name of the storey");
+    storey.LongName.value = result;
+    loader.ifcManager.ifcAPI.WriteLine(model.modelID, storey);
+
+    const data = await loader.ifcManager.ifcAPI.ExportFileAsIFC(model.modelID);
+    const blob = new Blob([data]);
+    const file = new File([blob], "modified.ifc");
+
+    const link = document.createElement('a');
+    link.download = 'modified.ifc';
+    link.href = URL.createObjectURL(file);
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+  }
 
   const toggler = document.getElementsByClassName("caret");
   for (let i = 0; i < toggler.length; i++) {
@@ -109,6 +165,56 @@ import {
       toggler[i].parentElement.querySelector(".nested").classList.toggle("active");
       toggler[i].classList.toggle("caret-down");
     }
+  }
+
+  function getName(category) {
+    const names = Object.keys(categories);
+    return names.find(name => categories[name] === category);
+  }
+
+  async function getAll(category) {
+    return loader.ifcManager.getAllItemsOfType(0, category, false);
+  }
+
+// Creates a new subset containing all elements of a category
+  async function newSubsetOfType(category) {
+    const ids = await getAll(category);
+    return loader.ifcManager.createSubset({
+        modelID: 0,
+        scene,
+        ids,
+        removePrevious: true,
+        customID: category.toString()
+    })
+  }
+
+  // Stores the created subsets
+  const subsets = {};
+
+  async function setupAllCategories() {
+    const allCategories = Object.values(categories);
+    for (let i = 0; i < allCategories.length; i++) {
+      const category = allCategories[i];
+      await setupCategory(category);
+    }
+  }
+
+// Creates a new subset and configures the checkbox
+  async function setupCategory(category) {
+    subsets[category] = await newSubsetOfType(category);
+    setupCheckBox(category);
+  }
+
+// Sets up the checkbox event to hide / show elements
+  function setupCheckBox(category) {
+    const name = getName(category);
+    const checkBox = document.getElementById(name);
+    checkBox.addEventListener('change', (event) => {
+      const checked = event.target.checked;
+      const subset = subsets[category];
+      if (checked) scene.add(subset);
+      else subset.removeFromParent();
+    });
   }
 
   const raycaster = new Raycaster();
@@ -184,8 +290,6 @@ import {
       childNode.classList.add('leaf-node');
       childNode.textContent = content;
       parent.appendChild(childNode);
-
-      let lastMaterial;
 
       childNode.onmousemove = async () => {
         const id = node.expressID;

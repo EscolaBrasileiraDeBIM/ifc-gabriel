@@ -18,17 +18,22 @@ html, body {
 #file-input{
     position: absolute;
     z-index: 1;
-    
-}
-
-#file-input-box{
-    margin-right: 21%;
-    float: right;
+    right: 8rem;
 }
 
 #checkbox-container{
     display: flex; 
     justify-content: flex-end;
+}
+
+#text-container{
+    position: absolute;
+    display: flex;
+    right: 2rem;
+}
+
+#text-container *:first-child{
+    margin-right: 5px;
 }
 
 .checkboxes {
